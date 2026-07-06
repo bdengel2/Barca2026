@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <!--
   PHOTOS: every stop now looks for a file at images/<slug>.jpg.
   Drop a same-named .jpg into an /images folder next to this HTML file on
@@ -34,8 +34,8 @@
 -->
 <style>
   :root{
-    --bg-0:#f2ede0;
-    --bg-1:#ece5d4;
+    --bg-0:#f8f6ef;
+    --bg-1:#f1ede2;
     --paper:#1c1a15;
     --paper-dim:#5c584c;
     --line:rgba(28,26,21,0.22);
@@ -47,9 +47,9 @@
     --day3:#8a6412; /* born/picasso/sagrada - ochre ink */
     --day4:#5a3f5c; /* departure - plum ink */
 
-    --serif: "Courier Prime", "Courier New", ui-monospace, monospace;
-    --sans: "Courier Prime", "Courier New", ui-monospace, monospace;
-    --mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --sans: "PT Serif", Georgia, "Times New Roman", serif;
+    --mono: "PT Serif", Georgia, "Times New Roman", serif;
   }
 
   *{box-sizing:border-box;}
@@ -468,28 +468,23 @@
 </head>
 <body>
 
-<!-- Icon library -->
+<!-- Icon library: Google Maps-style category icons -->
 <svg width="0" height="0" style="position:absolute">
-<symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h13a3 3 0 0 1 0 6h-1"/><path d="M4 8v7a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V8"/><path d="M8 3c0 1-1 1-1 2s1 1 1 2M12 3c0 1-1 1-1 2s1 1 1 2"/></symbol>
-<symbol id="i-column" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21h16M5 21V9M9 21V9M15 21V9M19 21V9M4 9h16M4 9l8-6 8 6"/></symbol>
-<symbol id="i-arch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 21V11a7 7 0 0 1 14 0v10M3 21h18"/></symbol>
-<symbol id="i-fork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2v9M4 2v5a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2M6 13v9M17 2c-2 1-3 3-3 6s1 5 3 6v7"/></symbol>
-<symbol id="i-plate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></symbol>
-<symbol id="i-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12l-2 9a4 4 0 0 1-8 0L6 3z"/><path d="M12 14v7M8 21h8"/></symbol>
-<symbol id="i-tram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8l8-5 8 5M6 8v10h12V8M6 18l-2 3M18 18l2 3M10 12h4"/></symbol>
-<symbol id="i-castle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l3-3v3l2-3v3l3-3 3 3v-3l2 3v-3l3 3v12H4z"/></symbol>
+<symbol id="i-cafe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h13a3 3 0 0 1 0 6h-1"/><path d="M4 8v7a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V8"/><path d="M8 3c0 1-1 1-1 2s1 1 1 2M12 3c0 1-1 1-1 2s1 1 1 2"/></symbol>
+<symbol id="i-museum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21h16M5 21V9M9 21V9M15 21V9M19 21V9M4 9h16M4 9l8-6 8 6"/></symbol>
+<symbol id="i-church" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v3M10.5 3.5h3"/><path d="M12 5l7 6v10H5V11z"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></symbol>
+<symbol id="i-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2v9M4 2v5a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2M6 13v9M17 2c-2 1-3 3-3 6s1 5 3 6v7"/></symbol>
+<symbol id="i-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16l-7 8v8M9 20h6M8 4l4 8 4-8"/></symbol>
+<symbol id="i-transit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5M5 8v10h14V8M5 18l-2 3M19 18l2 3M9 12h6"/></symbol>
 <symbol id="i-park" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/><path d="M12 15v7"/></symbol>
-<symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-.5-1.5-.5-2.3c0-.9.7-1.7 1.7-1.7H17a3 3 0 0 0 3-3c0-5-3.6-9-8-9z"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10" r="1"/></symbol>
-<symbol id="i-fountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M8 8s1-2 4-2 4 2 4 2M5 12s1-3 7-3 7 3 7 3M3 20h18M4 20V16h16v4"/></symbol>
-<symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l7-2 6-8 2 1-4 8 6 2v2l-6-1-2 5 2 2-1 2-4-3-4 3-1-2 2-2-2-5-6 1v-2z"/></symbol>
+<symbol id="i-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 5H9z"/><path d="M9 7h6v11H9z"/><path d="M6 21h12M7 18v3M17 18v3"/></symbol>
+<symbol id="i-airport" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l7-2 6-8 2 1-4 8 6 2v2l-6-1-2 5 2 2-1 2-4-3-4 3-1-2 2-2-2-5-6 1v-2z"/></symbol>
 <symbol id="i-market" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l2-5h14l2 5M4 9v11h16V9M4 9h16M9 20v-6h6v6"/></symbol>
-<symbol id="i-goose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21c0-4 2-6 2-9a5 5 0 0 0-10 0c-2 0-3 1-3 3M9 12l-3-1M17 8l2-2"/></symbol>
 </svg>
 
 <div class="hero">
   <div class="hero-eyebrow"><span>Barcelona Edition</span><span>Oct 17–21, 2026</span></div>
-  <h1>The Brandon &amp; Alyssa Gazette</h1>
-  <p>A five-day itinerary: Roman ruins, a medieval shipyard, Gaudí, and where to eat along the way.</p>
+  <h1>Brandon &amp; Alyssa</h1>
 </div>
 
 <nav class="daynav">
@@ -554,7 +549,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-plane"/></svg></div>
+        <div class="icon"><svg><use href="#i-airport"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">1:15 PM</span>
           <span class="stop-name">Land at BCN</span>
@@ -571,7 +566,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-park"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">6:00 PM</span>
           <span class="stop-name">Gràcia's squares</span>
@@ -589,7 +584,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-fountain"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:00 PM</span>
           <span class="stop-name">Magic Fountain of Montjuïc</span>
@@ -609,7 +604,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-glass"/></svg></div>
+        <div class="icon"><svg><use href="#i-bar"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">10:00 PM</span>
           <span class="stop-name">Bar Canigó</span>
@@ -650,7 +645,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-coffee"/></svg></div>
+        <div class="icon"><svg><use href="#i-cafe"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">7:45 AM</span>
           <span class="stop-name">Mauri</span>
@@ -687,7 +682,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-goose"/></svg></div>
+        <div class="icon"><svg><use href="#i-church"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">11:30 AM</span>
           <span class="stop-name">Cathedral cloister — the geese</span>
@@ -705,7 +700,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">12:00 PM</span>
           <span class="stop-name">Roman city walls</span>
@@ -723,7 +718,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-column"/></svg></div>
+        <div class="icon"><svg><use href="#i-museum"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">12:45 PM</span>
           <span class="stop-name">MUHBA — Plaça del Rei</span>
@@ -741,7 +736,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-tram"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">2:00 PM</span>
           <span class="stop-name">La Rambla</span>
@@ -760,7 +755,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-fork"/></svg></div>
+        <div class="icon"><svg><use href="#i-food"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">2:15 PM</span>
           <span class="stop-name">El Quim de la Boqueria</span>
@@ -778,7 +773,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">3:15 PM</span>
           <span class="stop-name">Plaça de Sant Felip Neri</span>
@@ -796,7 +791,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-church"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">3:45 PM</span>
           <span class="stop-name">Cathedral rooftop</span>
@@ -815,7 +810,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-plate"/></svg></div>
+        <div class="icon"><svg><use href="#i-food"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:00 PM</span>
           <span class="stop-name">Can Culleretes</span>
@@ -833,7 +828,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">Later</span>
           <span class="stop-name">Gothic Quarter by night</span>
@@ -874,7 +869,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-coffee"/></svg></div>
+        <div class="icon"><svg><use href="#i-cafe"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:30 AM</span>
           <span class="stop-name">Café Godot</span>
@@ -892,7 +887,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-column"/></svg></div>
+        <div class="icon"><svg><use href="#i-museum"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">9:40 AM</span>
           <span class="stop-name">Museu Marítim</span>
@@ -910,7 +905,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-tram"/></svg></div>
+        <div class="icon"><svg><use href="#i-transit"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">11:00 AM</span>
           <span class="stop-name">Aeri del Port</span>
@@ -928,7 +923,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-castle"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">11:45 AM</span>
           <span class="stop-name">Montjuïc Castle</span>
@@ -946,7 +941,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-fork"/></svg></div>
+        <div class="icon"><svg><use href="#i-food"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">1:00 PM</span>
           <span class="stop-name">Salts — Terrassa Bar Montjuïc</span>
@@ -964,7 +959,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-castle"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">2:15 PM</span>
           <span class="stop-name">Anella Olímpica</span>
@@ -982,7 +977,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-tram"/></svg></div>
+        <div class="icon"><svg><use href="#i-landmark"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">4:00 PM</span>
           <span class="stop-name">Las Arenas rooftop</span>
@@ -1000,7 +995,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-plate"/></svg></div>
+        <div class="icon"><svg><use href="#i-bar"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:00 PM</span>
           <span class="stop-name">Quimet y Quimet</span>
@@ -1018,7 +1013,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-glass"/></svg></div>
+        <div class="icon"><svg><use href="#i-bar"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">9:30 PM</span>
           <span class="stop-name">Bar Marsella</span>
@@ -1056,7 +1051,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-coffee"/></svg></div>
+        <div class="icon"><svg><use href="#i-cafe"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:30 AM</span>
           <span class="stop-name">La Nena</span>
@@ -1074,7 +1069,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-column"/></svg></div>
+        <div class="icon"><svg><use href="#i-museum"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">9:45 AM</span>
           <span class="stop-name">El Born Centre de Cultura i Memòria</span>
@@ -1092,7 +1087,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-palette"/></svg></div>
+        <div class="icon"><svg><use href="#i-museum"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">10:45 AM</span>
           <span class="stop-name">Museu Picasso</span>
@@ -1110,7 +1105,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-fork"/></svg></div>
+        <div class="icon"><svg><use href="#i-food"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">12:00 PM</span>
           <span class="stop-name">Els Quatre Gats</span>
@@ -1128,7 +1123,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-church"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">1:15 PM</span>
           <span class="stop-name">Santa Maria del Mar</span>
@@ -1146,7 +1141,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-arch"/></svg></div>
+        <div class="icon"><svg><use href="#i-church"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">2:15 PM</span>
           <span class="stop-name">Sagrada Família</span>
@@ -1165,7 +1160,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-column"/></svg></div>
+        <div class="icon"><svg><use href="#i-museum"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">4:00 PM</span>
           <span class="stop-name">Recinte Modernista de Sant Pau</span>
@@ -1183,7 +1178,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-plate"/></svg></div>
+        <div class="icon"><svg><use href="#i-food"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:00 PM</span>
           <span class="stop-name">Casa Leopoldo</span>
@@ -1201,7 +1196,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-glass"/></svg></div>
+        <div class="icon"><svg><use href="#i-bar"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">9:30 PM</span>
           <span class="stop-name">Boadas Cocktails</span>
@@ -1240,7 +1235,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-coffee"/></svg></div>
+        <div class="icon"><svg><use href="#i-cafe"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">8:30 AM</span>
           <span class="stop-name">Mauri</span>
@@ -1276,7 +1271,7 @@
 
     <details class="stop">
       <summary>
-        <div class="icon"><svg><use href="#i-plane"/></svg></div>
+        <div class="icon"><svg><use href="#i-airport"/></svg></div>
         <div class="stop-meta">
           <span class="stop-time">11:00 AM</span>
           <span class="stop-name">Head to the airport</span>
