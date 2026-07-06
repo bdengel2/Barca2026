@@ -181,15 +181,6 @@
     font-style:italic;
     max-width:56ch;
   }
-  .day-theme::first-letter{
-    font-size:2.4em;
-    font-weight:700;
-    font-style:normal;
-    float:left;
-    line-height:0.8;
-    padding-right:5px;
-    color:var(--dc);
-  }
 
   .daybanner{
     margin:0 0 20px 40px;
@@ -283,6 +274,24 @@
     border:1px solid var(--rule);
   }
   .stop-body p{margin:0 0 10px;}
+  .stop-body .facts{
+    list-style:none;
+    margin:0 0 12px;
+    padding:8px 10px;
+    border:1px dashed var(--rule);
+    font-size:12.5px;
+  }
+  .stop-body .facts li{margin:3px 0; padding-left:14px; position:relative;}
+  .stop-body .facts li::before{content:"—"; position:absolute; left:0;}
+  .stop-body .facts .facts-label{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    font-size:10.5px;
+    padding-left:0;
+    margin-bottom:4px;
+  }
+  .stop-body .facts .facts-label::before{content:none;}
   .stop-body .maplink{
     font-size:11px;
     font-weight:700;
@@ -383,6 +392,63 @@
     #tripmap{height:440px;}
   }
 
+  /* ---------- Extras section ---------- */
+  .extras{
+    padding:32px 20px 8px;
+    border-bottom:4px double var(--rule);
+  }
+  .extras h2{
+    font-size:clamp(19px,5vw,25px);
+    font-weight:700;
+    text-transform:uppercase;
+    margin:0 0 4px;
+  }
+  .extras > p.sub{
+    font-size:13px;
+    font-style:italic;
+    color:var(--paper-dim);
+    margin:0 0 20px;
+    max-width:60ch;
+  }
+  .extras h3{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:6px;
+    margin:26px 0 12px;
+  }
+  .xcard{
+    background:var(--bg-1);
+    border:1px solid var(--rule);
+    padding:13px 15px;
+    margin-bottom:10px;
+  }
+  .xcard summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:baseline;
+  }
+  .xcard summary::-webkit-details-marker{display:none;}
+  .xcard .xname{font-weight:700; font-size:14.5px;}
+  .xcard .xkind{font-size:11px; color:var(--paper-dim); font-style:italic; white-space:nowrap;}
+  .xcard .xbody{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+    font-size:13.5px;
+  }
+  .xcard .xbody p{margin:0 0 8px;}
+  .xcard .xwhy{font-style:italic; color:var(--paper-dim);}
+  .xcard .xrec{
+    border-left:3px solid var(--paper);
+    padding-left:10px;
+    margin-top:8px;
+  }
+
   footer{
     padding:40px 20px 60px;
     color:var(--paper-dim);
@@ -423,7 +489,7 @@
 <div class="hero">
   <div class="hero-eyebrow"><span>Barcelona Edition</span><span>Oct 17–21, 2026</span></div>
   <h1>The Brandon &amp; Alyssa Gazette</h1>
-  <p>"Five days of Roman ruins, a medieval shipyard, Gaudí, and the bars where Picasso actually drank" — special engineering &amp; history supplement</p>
+  <p>A five-day itinerary: Roman ruins, a medieval shipyard, Gaudí, and where to eat along the way.</p>
 </div>
 
 <nav class="daynav">
@@ -433,6 +499,7 @@
   <a href="#day2" data-d="2">Mon 10/19 · Maritime</a>
   <a href="#day3" data-d="3">Tue 10/20 · Born &amp; Picasso</a>
   <a href="#day4" data-d="4">Wed 10/21 · Departure</a>
+  <a href="#extras">☞ Not on the itinerary</a>
 </nav>
 
 <div class="controls">
@@ -498,6 +565,7 @@
       <div class="stop-body">
         <img class="photo" src="images/land-at-bcn.jpg" alt="Land at BCN" loading="lazy" onerror="this.remove()">
         <p>Aerobus to Plaça Catalunya (~35 min), then Metro L3 Fontana into Gràcia (~10 min). About an hour door-to-door. Check in, shower, decompress.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>El Prat has been used for aviation since 1916, though the current terminal dates to a 1948 rebuild.</li><li>It's Spain's second-busiest airport after Madrid-Barajas.</li></ul>
       </div>
     </details>
 
@@ -514,6 +582,7 @@
       <div class="stop-body">
         <img class="photo" src="images/gr-cia-s-squares.jpg" alt="Gràcia's squares" loading="lazy" onerror="this.remove()">
         <p>Gràcia was its own independent town until it was annexed by Barcelona in 1897, and it still moves at that pace. Plaça del Sol is the neighborhood's social heart — locals on the steps, no restaurant marketing involved. Plaça de la Vila de Gràcia has the 1860s clock tower, damaged by Civil War bombing and still keeping time.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Gràcia was its own independent town until 1897, and residents voted against joining Barcelona twice before it happened anyway.</li><li>Plaça del Sol was bombed during the Spanish Civil War in 1938.</li><li>The clock tower on Plaça de la Vila de Gràcia has been rebuilt more than once after damage.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Placa+del+Sol+Gracia+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -532,6 +601,7 @@
         <img class="photo" src="images/magic-fountain-of-montju-c.jpg" alt="Magic Fountain of Montjuïc" loading="lazy" onerror="this.remove()">
         <span class="flag">Only runs Thu–Sat, 9–10 PM</span>
         <p>Built for the 1929 International Exposition by engineer Carles Buïgas — a genuinely large piece of hydraulic engineering as much as a light show. Free, open-air, no tickets. Metro L3 Fontana → Espanya (~15–20 min). Arrive before 9 for a spot on the MNAC steps.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Uses more than 3,000 individual water jets and 4,700 lights.</li><li>Built for the 1929 International Exposition, the same year as the nearby Venetian Towers.</li><li>Shut down for years during Barcelona's 2021–2024 drought restrictions and only reopened in September 2025.</li></ul>
         <p>Optional — you'll be jet-lagged. Skip without guilt if you'd rather just rest.</p>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Magic+Fountain+of+Montjuic+Barcelona" target="_blank">View on map →</a>
       </div>
@@ -550,6 +620,7 @@
       <div class="stop-body">
         <img class="photo" src="images/bar-canig.jpg" alt="Bar Canigó" loading="lazy" onerror="this.remove()">
         <p>An old-school Gràcia vermuteria on Carrer de Verdi — vermouth on tap, a zinc counter, a crowd of actual regulars. Open until 2:30 AM on Saturdays, so a later dinner works fine here.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Named after Mont Canigó, a peak in the Pyrenees considered a near-sacred symbol of Catalan identity.</li><li>Sunday vermut (vermouth hour) is traditionally a pre-lunch ritual here, not an evening one.</li><li>Reviewers consistently rank its patatas bravas among the best in the neighborhood.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bar+Canigo+Carrer+de+Verdi+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -590,6 +661,7 @@
       <div class="stop-body">
         <img class="photo" src="images/mauri.jpg" alt="Mauri" loading="lazy" onerror="this.remove()">
         <p>A proper sit-down breakfast counter on Plaça de la Llibertat, right in front of the market. Locals order the <em>esmorzar de forquilla</em> — scrambled eggs with pancetta or sobrasada, a slice of tortilla, real coffee. Five minutes from most Gràcia hotels.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The 'esmorzar de forquilla' (fork breakfast) was originally built for manual laborers who needed real calories before a shift, not tourists.</li><li>Sits directly across from Mercat de la Llibertat, one of Gràcia's oldest markets.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mauri+Placa+de+la+Llibertat+23+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -608,6 +680,7 @@
         <img class="photo" src="images/park-g-ell.jpg" alt="Park Güell" loading="lazy" onerror="this.remove()">
         <span class="flag">Book timed entry ahead — no walk-up sales</span>
         <p>Started life as a failed 1900s luxury housing development; only two houses got built before it was abandoned and handed to the city. Even setting the art aside, the terrace walls and viaducts are a real engineering curiosity — Gaudí built them from local rubble stone specifically to blend into the hillside and manage rainwater runoff. Open 9:30 AM–7:30 PM this time of year. Budget 75–90 minutes; best views from Nature Square at the top.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Only 2 of the 60 planned luxury homes were ever built before the development went bankrupt in 1914.</li><li>The serpentine bench's ergonomic curve was reportedly shaped by sitting a worker in wet plaster.</li><li>Declared a UNESCO World Heritage Site in 1984.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Park+Guell+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -625,6 +698,7 @@
       <div class="stop-body">
         <img class="photo" src="images/cathedral-cloister-the-geese.jpg" alt="Cathedral cloister — the geese" loading="lazy" onerror="this.remove()">
         <p>The Cathedral's Gothic cloister keeps 13 white geese, one for each year of Saint Eulàlia's age when she was martyred in Roman Barcino — they've lived there for centuries. Free access to the cloister most of the day. 10-minute walk from Metro Liceu.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The number 13 specifically honors Saint Eulàlia's age when she was martyred in Roman Barcino.</li><li>Geese have historically served as living alarm systems — loud with strangers, echoing the ancient legend of Rome's Capitoline geese.</li><li>The cloister fountain hosts a Corpus Christi tradition called l'ou com balla, the 'dancing egg.'</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Barcelona+Cathedral+cloister+geese" target="_blank">View on map →</a>
       </div>
     </details>
@@ -642,6 +716,7 @@
       <div class="stop-body">
         <img class="photo" src="images/roman-city-walls.jpg" alt="Roman city walls" loading="lazy" onerror="this.remove()">
         <p>Same stop as the Cathedral, no extra travel. Sections of Barcelona's actual 4th-century defensive wall, some just embedded in later medieval buildings — a reminder that Roman Barcino was a minor outpost, not a major settlement.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Built in the late 3rd or early 4th century AD, replacing an even earlier, weaker wall.</li><li>Roman Barcelona (Barcino) was a minor colony — Tarraco (modern Tarragona) was the regional capital.</li><li>Some sections are literally embedded inside the basements of buildings still in daily use.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Roman+city+walls+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -659,6 +734,7 @@
       <div class="stop-body">
         <img class="photo" src="images/muhba-pla-a-del-rei.jpg" alt="MUHBA — Plaça del Rei" loading="lazy" onerror="this.remove()">
         <p>The best single thing on the whole trip if you like this kind of history. A lift under a 16th-century palace drops you onto glass walkways over an entire excavated Roman neighborhood — laundries, wine-pressing vats, a 2nd-century bathhouse, the foundations of one of the earliest churches in Iberia. Budget 60–75 minutes; head straight down.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The underground site covers more than 4,000 square meters of excavated Roman streets.</li><li>Includes the remains of a Roman garum (fermented fish sauce) production facility.</li><li>Casa Padellàs, the palace above the ruins, was moved here stone by stone in 1931 from elsewhere in the city.</li></ul>
         <a class="maplink" href="https://www.barcelona.cat/museuhistoria/en" target="_blank">Official site →</a>
       </div>
     </details>
@@ -677,6 +753,7 @@
         <img class="photo" src="images/la-rambla.jpg" alt="La Rambla" loading="lazy" onerror="this.remove()">
         <span class="flag">Some sections under renovation</span>
         <p>Barcelona's most famous boulevard — plane trees, flower stalls, human statues. Touristy and locals mostly avoid it, but it's a genuinely historic promenade, and it's directly on the way to lunch anyway.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The name comes from the Arabic 'ramla,' meaning a dry seasonal riverbed — which is literally what it was until the 14th century.</li><li>Split into five distinct named sections, each with its own character.</li><li>Home to Barcelona's human-statue street performers since the 1980s.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La+Rambla+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -694,6 +771,7 @@
       <div class="stop-body">
         <img class="photo" src="images/el-quim-de-la-boqueria.jpg" alt="El Quim de la Boqueria" loading="lazy" onerror="this.remove()">
         <p>A counter, not a restaurant — inside La Boqueria market, where cooks and market workers actually eat. Order at the bar, eat on a stool, done in 20 minutes. Fried eggs with baby squid is the thing to get.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>A few stalls down from Pinotxo Bar, the counter Anthony Bourdain famously visited in the same market.</li><li>La Boqueria's current iron-and-glass structure dates to the 1840s–1914, though a market has stood on this site since the 1200s.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=El+Quim+de+la+Boqueria+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -711,6 +789,7 @@
       <div class="stop-body">
         <img class="photo" src="images/pla-a-de-sant-felip-neri.jpg" alt="Plaça de Sant Felip Neri" loading="lazy" onerror="this.remove()">
         <p>A tiny, quiet square two minutes from the Cathedral, easy to walk past without noticing. Look at the church facade and you'll see pockmarks from shrapnel — a 1938 Civil War air raid killed dozens of people sheltering here, mostly children. No ticket, no crowds, just a five-minute stop that says more about the city than most museums do.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The bombing on January 30, 1938 killed 42 people, many of them children sheltering nearby.</li><li>For years many locals assumed the damage came from Civil War firing squads rather than an aerial raid.</li><li>Its stark, quiet look has made it a favorite filming location for period movies.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Placa+de+Sant+Felip+Neri+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -729,6 +808,7 @@
         <img class="photo" src="images/cathedral-rooftop.jpg" alt="Cathedral rooftop" loading="lazy" onerror="this.remove()">
         <span class="flag">Small fee, pay inside</span>
         <p>Same building as this morning's geese, so no extra travel — a lift takes you up to the roof for a close look at the spires and gargoyles, plus a rooftop view over the Gothic Quarter you don't get from street level. Quick, easy, and a good way to close the loop on the morning's Cathedral visit.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The rooftop lift is a relatively recent addition — for most of the Cathedral's history the roof wasn't open to visitors at all.</li><li>One of the gargoyles up there is shaped like an elephant.</li><li>On a clear day you can see as far as Tibidabo and Montjuïc from the roof.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Barcelona+Cathedral+roof+access" target="_blank">View on map →</a>
       </div>
     </details>
@@ -746,6 +826,7 @@
       <div class="stop-body">
         <img class="photo" src="images/can-culleretes.jpg" alt="Can Culleretes" loading="lazy" onerror="this.remove()">
         <p>Barcelona's oldest restaurant, opened 1786, family-run, unpretentious old dining rooms in the Gothic Quarter. Worth double-checking their exact Sunday hours before you go.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Opened in 1786, it's officially recognized as Barcelona's oldest restaurant.</li><li>Its walls are lined with photos of Catalan cultural figures who've eaten there over more than two centuries.</li><li>'Culleretes' means 'little spoons' in Catalan.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Can+Culleretes+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -763,6 +844,7 @@
       <div class="stop-body">
         <img class="photo" src="images/gothic-quarter-by-night.jpg" alt="Gothic Quarter by night" loading="lazy" onerror="this.remove()">
         <p>A slow walk back through the Gothic Quarter after dinner — the Cathedral exterior and the narrow medieval streets around Plaça del Rei are lit at night and much quieter than during the day.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Much of the 'medieval' look of the Gothic Quarter's facades was actually added in the early 20th century to romanticize the neighborhood.</li><li>Several streets are still named for the medieval guilds that worked there — Carrer dels Sombrerers means 'hatmakers' street.'</li></ul>
       </div>
     </details>
 
@@ -803,6 +885,7 @@
       <div class="stop-body">
         <img class="photo" src="images/caf-godot.jpg" alt="Café Godot" loading="lazy" onerror="this.remove()">
         <p>Full breakfast menu near Plaça del Sol — homemade granola, scrambled eggs, Iberian ham, real coffee. Relaxed, French-café feel, three minutes off the main square.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Named after Samuel Beckett's play Waiting for Godot.</li><li>A genuine Gràcia weekend-brunch spot for locals, not a tour-guide recommendation.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Cafe+Godot+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -820,6 +903,7 @@
       <div class="stop-body">
         <img class="photo" src="images/museu-mar-tim.jpg" alt="Museu Marítim" loading="lazy" onerror="this.remove()">
         <p>The 13th-century royal shipyards of the Crown of Aragon — a Gothic industrial hall so large it feels like a cathedral built for warships instead of worship. Inside: a full-size, seaworthy replica of the flagship galley from the 1571 Battle of Lepanto. Budget 60–75 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Housed in the Drassanes Reials, one of the largest surviving medieval shipyards anywhere in the world.</li><li>The full-size galley replica inside represents the flagship from the 1571 Battle of Lepanto.</li><li>At full wartime output, the shipyard could reportedly launch a new galley roughly every day.</li></ul>
         <a class="maplink" href="https://www.mmb.cat/en/" target="_blank">Official site →</a>
       </div>
     </details>
@@ -837,6 +921,7 @@
       <div class="stop-body">
         <img class="photo" src="images/aeri-del-port.jpg" alt="Aeri del Port" loading="lazy" onerror="this.remove()">
         <p>Running since 1931 — a small cabin carries you straight across the working harbor to the base of Montjuïc. Genuinely early urban infrastructure, not a theme-park ride. ~10 minute crossing.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Opened for the 1929 International Exposition, the same year as the Magic Fountain.</li><li>Climbs to roughly 70 meters above the harbor at its highest point.</li><li>Appears in Carlos Ruiz Zafón's novel The Angel's Game.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Aeri+del+Port+cable+car+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -854,6 +939,7 @@
       <div class="stop-body">
         <img class="photo" src="images/montju-c-castle.jpg" alt="Montjuïc Castle" loading="lazy" onerror="this.remove()">
         <p>Telefèric de Montjuïc from Miramar station gets you up (~8 min). A 17th-century fortress with an uncomfortable history — used as a military prison into the 20th century; Catalonia's president Lluís Companys was executed here in 1940. Real fortification engineering, plus the best 360° view of the city you'll get all trip. Budget 45–60 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Catalan president Lluís Companys was executed here by firing squad in 1940.</li><li>The hill's name may come from 'Mons Jovis' (Mount of Jupiter) or from a historic Jewish cemetery, 'Mons Judaicus.'</li><li>It wasn't fully handed over to civilian city control until 2007.</li></ul>
         <a class="maplink" href="https://ajuntament.barcelona.cat/castelldemontjuic/en" target="_blank">Official site →</a>
       </div>
     </details>
@@ -871,6 +957,7 @@
       <div class="stop-body">
         <img class="photo" src="images/salts-terrassa-bar-montju-c.jpg" alt="Salts — Terrassa Bar Montjuïc" loading="lazy" onerror="this.remove()">
         <p>A no-frills concession-style terrace just below the castle, run for the pool crowd and hikers rather than tour groups. Order at the counter, grab a table with a city view, done in 30 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Doubles as the snack bar for Montjuïc's public pool, built for the 1992 Olympic diving events.</li><li>One of the few spots on the hill where you'll hear more Catalan than English.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Salts+Terrassa+Bar+Montjuic+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -888,6 +975,7 @@
       <div class="stop-body">
         <img class="photo" src="images/anella-ol-mpica.jpg" alt="Anella Olímpica" loading="lazy" onerror="this.remove()">
         <p>A short walk from the castle — the 1992 Olympic Stadium (originally built in 1929, gutted and rebuilt for the Games), Arata Isozaki's Palau Sant Jordi with its unusual self-supporting roof structure, and Santiago Calatrava's telecommunications tower nearby. All outdoor, all free to walk around — a fast, no-ticket way to get an engineering fix between the castle and dinner.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The Olympic Stadium was originally built in 1929 and completely rebuilt for the 1992 Games.</li><li>Palau Sant Jordi's roof was one of the largest self-supporting domed structures in the world when it opened.</li><li>Calatrava's communications tower is also designed to work as a giant sundial.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Anella+Olimpica+Montjuic+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -905,6 +993,7 @@
       <div class="stop-body">
         <img class="photo" src="images/las-arenas-rooftop.jpg" alt="Las Arenas rooftop" loading="lazy" onerror="this.remove()">
         <p>A former 1900 bullring at Plaça d'Espanya, adaptively reused as a shopping and leisure complex with its original brick facade kept intact. Ride the escalators to the rooftop for a free 360° view over the plaza and up toward Montjuïc — a good last stop on the way back into town before dinner.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Built in 1900 as one of Barcelona's three bullrings.</li><li>Catalonia banned bullfighting in 2010, which is what freed up the building for conversion.</li><li>The original 1900 brick facade was preserved, with an entirely new structure built inside and above it.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Las+Arenas+de+Barcelona+rooftop" target="_blank">View on map →</a>
       </div>
     </details>
@@ -922,6 +1011,7 @@
       <div class="stop-body">
         <img class="photo" src="images/quimet-y-quimet.jpg" alt="Quimet y Quimet" loading="lazy" onerror="this.remove()">
         <p>Fourth-generation family-run, standing room only, wall-to-wall wine bottles, no written menu — you look at what's on the counter and point. Same family since the early 1900s.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Run by the same family since 1914, now in its fourth generation.</li><li>Anthony Bourdain filmed here for No Reservations (Season 4, 'Spain'), praising the montaditos.</li><li>There's no kitchen — everything is served cold, conserva-style, by design.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Quimet+y+Quimet+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -939,6 +1029,7 @@
       <div class="stop-body">
         <img class="photo" src="images/bar-marsella.jpg" alt="Bar Marsella" loading="lazy" onerror="this.remove()">
         <p>Open since 1820, absinthe its specialty, dusty mirrors and marble tables essentially untouched since the 19th century. Picasso, Hemingway, and Dalí all reportedly drank here. Open until midnight.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Open since 1820, one of the oldest continuously operating bars in Barcelona.</li><li>Reportedly visited by Anthony Bourdain, along with a long list of regulars that supposedly included Picasso, Dalí, and Hemingway.</li><li>Historically known as an absinthe bar from the drink's early-1900s European heyday.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bar+Marsella+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -976,6 +1067,7 @@
       <div class="stop-body">
         <img class="photo" src="images/la-nena.jpg" alt="La Nena" loading="lazy" onerror="this.remove()">
         <p>A real neighborhood family café — proper breakfasts, thick hot chocolate, good coffee — in a room full of Gràcia families rather than travelers.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Known locally for its 'suís,' a thick Catalan-style hot chocolate.</li><li>A neighborhood family spot, not a stop most guidebooks mention.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La+Nena+Carrer+Ramon+y+Cajal+36+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -993,6 +1085,7 @@
       <div class="stop-body">
         <img class="photo" src="images/el-born-centre-de-cultura-i-mem-ria.jpg" alt="El Born Centre de Cultura i Memòria" loading="lazy" onerror="this.remove()">
         <p>Originally a 19th-century iron-and-glass market. Renovation work in the 2000s hit the buried remains of the Ribera district, demolished in 1714 after Barcelona lost the War of the Spanish Succession, so the victorious crown could build a citadel to watch over the conquered city. You walk on raised walkways directly over the excavated streets. Budget 45–60 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>The ruins were found by accident during renovation work meant to turn the old market into a library.</li><li>The Ribera neighborhood was leveled specifically to build the Ciutadella, a fortress meant to police the newly conquered city.</li><li>The Ciutadella was hated locally enough that its demolition was celebrated in the 19th century; the site is a public park today.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=El+Born+Centre+de+Cultura+i+Memoria+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1010,6 +1103,7 @@
       <div class="stop-body">
         <img class="photo" src="images/museu-picasso.jpg" alt="Museu Picasso" loading="lazy" onerror="this.remove()">
         <p>Five joined medieval palaces on Carrer de Montcada, a 2-minute walk from El Born Centre. Focuses heavily on Picasso's formative years in Barcelona — you're watching a teenager become Picasso rather than looking at the famous later stuff. Budget 60–75 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Focuses on Picasso's formative years in Barcelona (1895–1904), not his famous Cubist period.</li><li>Housed across five joined medieval palaces on Carrer de Montcada.</li><li>Holds the largest collection of Picasso's early work anywhere in the world.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Museu+Picasso+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1027,6 +1121,7 @@
       <div class="stop-body">
         <img class="photo" src="images/els-quatre-gats.jpg" alt="Els Quatre Gats" loading="lazy" onerror="this.remove()">
         <p>Opened 1897 — the actual hangout of Picasso and his circle before he was famous; he held his first exhibition here and designed the menu cover as a broke 17-year-old. Five minutes from the Picasso Museum. More sit-down than grab-and-go, but fast if you keep it to a starter or two.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Picasso held his first-ever public exhibition here in 1900, at age 19.</li><li>The name means 'Four Cats' — Catalan slang for 'hardly anybody,' a joke about expected attendance.</li><li>Modeled directly on the Parisian cabaret Le Chat Noir.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Els+Quatre+Gats+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1044,6 +1139,7 @@
       <div class="stop-body">
         <img class="photo" src="images/santa-maria-del-mar.jpg" alt="Santa Maria del Mar" loading="lazy" onerror="this.remove()">
         <p>Built in just 59 years — fast for the period — largely funded and physically built by the neighborhood's own dockworkers and merchants, who hauled the stone themselves from the Montjuïc quarry. Deliberately plain inside. 15–20 minute stop.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Built in just 59 years (1329–1383) — remarkably fast for Gothic-era construction.</li><li>Central to Ildefonso Falcones' bestselling novel Cathedral of the Sea.</li><li>The stone was hauled up from the Montjuïc quarry by the neighborhood's own dockworkers, the bastaixos.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Basilica+de+Santa+Maria+del+Mar+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1062,6 +1158,7 @@
         <img class="photo" src="images/sagrada-fam-lia.jpg" alt="Sagrada Família" loading="lazy" onerror="this.remove()">
         <span class="flag">Confirm this against your booked slot time</span>
         <p>Worth seeing as an engineering problem: Gaudí used branching stone columns modeled on tree structures, and catenary/hyperboloid curves borrowed from how a hanging chain distributes weight, specifically to avoid needing exterior buttresses. Ask the audio guide for the structural angle. Budget 60–90 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Construction began in 1882 and is technically still ongoing — Gaudí assumed it would take centuries.</li><li>Gaudí is buried in the crypt beneath the basilica.</li><li>Became the tallest church in the world in 2026 upon completion of the central tower.</li></ul>
         <a class="maplink" href="https://sagradafamilia.org" target="_blank">Official tickets →</a>
       </div>
     </details>
@@ -1079,6 +1176,7 @@
       <div class="stop-body">
         <img class="photo" src="images/recinte-modernista-de-sant-pau.jpg" alt="Recinte Modernista de Sant Pau" loading="lazy" onerror="this.remove()">
         <p>A two-stop metro ride from Sagrada Família — a working hospital from 1930 until 2009, built as a campus of separate pavilions rather than one big block specifically because doctors at the time believed fresh air and sunlight reduced infection spread. It's a real piece of medical engineering as much as architecture, and it's a lot less crowded than the basilica you just left. Budget 45–60 minutes.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Built as 26 separate pavilions instead of one building, based on the period theory that fresh air and sunlight reduced infection.</li><li>Connected by underground tunnels so patients never had to cross outdoor paths between departments.</li><li>Functioned as a real, working hospital right up until 2009.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Recinte+Modernista+de+Sant+Pau+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1096,6 +1194,7 @@
       <div class="stop-body">
         <img class="photo" src="images/casa-leopoldo.jpg" alt="Casa Leopoldo" loading="lazy" onerror="this.remove()">
         <p>Family-run since 1929 in El Raval, tiled dining room, the same Catalan seafood-and-offal menu across four generations. A proper last big dinner without a hint of tour-group polish.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Family-run since 1929, now in its fourth generation.</li><li>A favorite of novelist Manuel Vázquez Montalbán, who featured it in his detective fiction.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Casa+Leopoldo+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1113,6 +1212,7 @@
       <div class="stop-body">
         <img class="photo" src="images/boadas-cocktails.jpg" alt="Boadas Cocktails" loading="lazy" onerror="this.remove()">
         <p>Barcelona's oldest cocktail bar, opened 1933, just off La Rambla — bow-tied bartenders, a genuine art deco interior. Miró and Hemingway both supposedly drank here. 10 minutes from Casa Leopoldo, open until 1:30 AM.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Opened in 1933 by Miquel Boadas, who trained behind the bar at Havana's famous La Floridita.</li><li>Ernest Hemingway and Joan Miró were both said to be regulars.</li><li>Among the first bars in Spain to serve a daiquiri.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Boadas+Cocktails+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1151,6 +1251,7 @@
       <div class="stop-body">
         <img class="photo" src="images/mauri.jpg" alt="Mauri" loading="lazy" onerror="this.remove()">
         <p>Same as Day 1 — quick, real food, two minutes from the hotel.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Same spot as Day 1 — worth repeating since it's fast and two minutes from most Gràcia hotels.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mauri+Placa+de+la+Llibertat+23+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1168,6 +1269,7 @@
       <div class="stop-body">
         <img class="photo" src="images/mercat-de-la-llibertat.jpg" alt="Mercat de la Llibertat" loading="lazy" onerror="this.remove()">
         <p>Built 1888 — one of the first Catalan Modernista iron-and-glass market halls, a small-scale preview of the engineering ideas Gaudí later pushed further. Real produce stalls, real vendors, five minutes from the hotel.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>Built in 1888, one of the first Catalan Modernista iron-and-glass markets.</li><li>Designed by Francesc Berenguer, a close collaborator (and rumored uncredited partner) of Gaudí.</li></ul>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mercat+de+la+Llibertat+Barcelona" target="_blank">View on map →</a>
       </div>
     </details>
@@ -1185,10 +1287,133 @@
       <div class="stop-body">
         <img class="photo" src="images/head-to-the-airport.jpg" alt="Head to the airport" loading="lazy" onerror="this.remove()">
         <p>Aerobus from Plaça Catalunya runs ~35 minutes; Metro L9 is closer to Gràcia but needs a transfer (~45–50 min total). Leaving by 11 gives you a comfortable buffer.</p>
+        <ul class="facts"><li class="facts-label">Fun facts</li><li>El Prat sits about 12 km southwest of central Barcelona, roughly a 25–35 minute ride depending on traffic and transit.</li></ul>
       </div>
     </details>
 
   </div>
+</section>
+
+<section class="extras" id="extras">
+  <h2>Not on the itinerary</h2>
+  <p class="sub">The famous stuff we left out on purpose, why, and — for food — where to actually get it instead.</p>
+
+  <h3>Attractions we skipped</h3>
+
+  <details class="xcard">
+    <summary><span class="xname">Casa Batlló</span><span class="xkind">Gaudí house-museum</span></summary>
+    <div class="xbody">
+      <p>Gaudí's second-most-famous residential building on Passeig de Gràcia, known for its bone-like balconies and dragon-scale roof.</p>
+      <p class="xwhy">Left out because it's the most Gaudí-as-art of his major works, and you'd already gotten a Gaudí fix at Park Güell without the ticket price (currently among the most expensive tickets in the city).</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Casa Milà (La Pedrera)</span><span class="xkind">Gaudí house-museum</span></summary>
+    <div class="xbody">
+      <p>Gaudí's last civic work before Sagrada Família, famous for its rippling stone facade and rooftop chimney "warriors."</p>
+      <p class="xwhy">Same reasoning as Casa Batlló — a third Gaudí ticketed stop felt redundant next to Park Güell and Sagrada Família, which already cover his engineering ideas.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Palau Güell</span><span class="xkind">Gaudí's early mansion, off La Rambla</span></summary>
+    <div class="xbody">
+      <p>An early Gaudí commission for his patron Eusebi Güell, known for parabolic brick arches and a rooftop forest of sculpted chimneys designed to ventilate the building.</p>
+      <p class="xwhy">Genuinely the most "engineering" of the Gaudí sites, so this one's a closer call — left off mainly for time. If you finish Day 1 early, it's two minutes off La Rambla and worth adding.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Palau de la Música Catalana</span><span class="xkind">Modernista concert hall</span></summary>
+    <div class="xbody">
+      <p>A UNESCO-listed concert hall with an enormous stained-glass skylight and some of the most ornate Modernista interior work in the city.</p>
+      <p class="xwhy">Skipped as a second "ornate Modernista interior tour" after the Sant Pau hospital — that one has the added engineering angle, this one is closer to pure decorative art.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Camp Nou</span><span class="xkind">FC Barcelona stadium tour</span></summary>
+    <div class="xbody">
+      <p>One of the largest football stadiums in the world and the most common "did you go?" question you'll get from other Americans.</p>
+      <p class="xwhy">Left out for logistics — it's outside the city center and would eat a half day that the itinerary didn't have room for. Worth adding if either of you follows soccer.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Poble Espanyol</span><span class="xkind">Open-air architecture replica village</span></summary>
+    <div class="xbody">
+      <p>A built-for-tourists "village" on Montjuïc with full-scale replicas of famous buildings from across Spain.</p>
+      <p class="xwhy">Skipped because you'll have already seen the real versions of this kind of historic architecture elsewhere on the trip — replicas felt redundant.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Flamenco show</span><span class="xkind">Evening performance</span></summary>
+    <div class="xbody">
+      <p>Live flamenco, widely offered around the Gothic Quarter and Poble Sec.</p>
+      <p class="xwhy">Left off because flamenco isn't actually a Catalan tradition — it's Andalusian, imported for tourists. Worth doing if you just want the experience, but it's not "Barcelona history" in the way the rest of this itinerary is.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Bunkers del Carmel</span><span class="xkind">Civil War flak position, sunset view</span></summary>
+    <div class="xbody">
+      <p>Anti-aircraft gun emplacements from the Spanish Civil War, now one of the best free sunset viewpoints in the city.</p>
+      <p class="xwhy">Genuinely worth it, left out purely for geography — it's on a different hill (El Carmel) from everything else, and working it in would've meant backtracking across the city.</p>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Barceloneta Beach</span><span class="xkind">A few hours of doing nothing</span></summary>
+    <div class="xbody">
+      <p>Barcelona's main city beach, a strip of sand a short walk from the Gothic Quarter and Born.</p>
+      <p class="xwhy">This itinerary is built for a fast pace with something happening most hours — there's no scheduled downtime for lounging. If you want a beach afternoon, it's easiest to slot in on Day 3, since you're already in Barceloneta for lunch.</p>
+    </div>
+  </details>
+
+  <h3>Food not covered by the restaurants on this itinerary</h3>
+
+  <details class="xcard">
+    <summary><span class="xname">The "bomba" croquette</span><span class="xkind">Barceloneta's signature fried potato dish</span></summary>
+    <div class="xbody">
+      <p>A fried mashed-potato croquette filled with meat, topped with spicy sauce and alioli — invented in Barceloneta in the 1940s to feed dockworkers cheaply.</p>
+      <div class="xrec"><strong>Where to get it:</strong> La Cova Fumada, Carrer del Baluard 56 — no sign on the door, cash only, the actual birthplace of the dish. It was on an earlier draft of this itinerary and got cut for pacing, but it's worth a special trip if you're near Barceloneta.</div>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Churros con chocolate</span><span class="xkind">Fried dough, thick hot chocolate for dipping</span></summary>
+    <div class="xbody">
+      <p>A classic Spanish breakfast or late-night snack — not really a Catalan invention, but ubiquitous in Barcelona anyway.</p>
+      <div class="xrec"><strong>Where to get it:</strong> Granja M. Viader, off La Rambla — open since 1870, and the place that invented Cacaolat (Catalonia's answer to chocolate milk). None of the breakfast spots on this itinerary specialize in this specifically.</div>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Seafood paella / fideuà</span><span class="xkind">Rice or noodle dish with seafood</span></summary>
+    <div class="xbody">
+      <p>Paella is technically Valencian, not Catalan, but it's everywhere in Barcelona and worth having once — fideuà is the Catalan cousin, made with short noodles instead of rice.</p>
+      <div class="xrec"><strong>Where to get it:</strong> 7 Portes, near the Born — open since 1836, one of the oldest restaurants in the city and known specifically for paella. None of the sit-down dinners on this itinerary center on rice dishes.</div>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Jamón ibérico, properly tasted</span><span class="xkind">Cured ham flight</span></summary>
+    <div class="xbody">
+      <p>Spain's cured ham culture runs deep, and a proper tasting flight (comparing grades like jamón serrano vs. ibérico de bellota) is worth doing once, slowly, with someone who can explain the differences.</p>
+      <div class="xrec"><strong>Where to get it:</strong> Any dedicated jamonería — there's a well-regarded one right in La Boqueria market, a few stalls from El Quim, so it's easy to add onto Day 1 without extra travel.</div>
+    </div>
+  </details>
+
+  <details class="xcard">
+    <summary><span class="xname">Pinotxo Bar &amp; Cal Pep</span><span class="xkind">Two other Bourdain-visited spots</span></summary>
+    <div class="xbody">
+      <p>Pinotxo Bar is a counter inside La Boqueria, a few stalls from El Quim, and probably the single spot most associated with Anthony Bourdain's Barcelona episodes. Cal Pep, near the Born, is a seafood counter he also visited.</p>
+      <p class="xwhy">Left out mainly because El Quim de la Boqueria and Quimet y Quimet already cover the same "market counter" and "Bourdain-approved tapas bar" ground on this itinerary — three overlapping versions of the same experience felt like one too many. If you want to chase every Bourdain stop specifically, these are the two to add.</p>
+    </div>
+  </details>
+
 </section>
 
 <footer>
@@ -1286,17 +1511,24 @@
     });
   });
 
-  // day filter buttons
+  // day filter buttons — filter both the map layers and the itinerary sections below
   const filterButtons = document.querySelectorAll('#mapfilters button');
+  const daySections = document.querySelectorAll('section.day');
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const fd = btn.dataset.fd;
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
       Object.keys(dayLayers).forEach(d => {
         const show = (fd === 'all') || (fd === d);
         if (show) { if (!map.hasLayer(dayLayers[d])) map.addLayer(dayLayers[d]); }
         else { if (map.hasLayer(dayLayers[d])) map.removeLayer(dayLayers[d]); }
+      });
+
+      daySections.forEach(sec => {
+        const show = (fd === 'all') || (fd === sec.dataset.d);
+        sec.style.display = show ? '' : 'none';
       });
     });
   });
